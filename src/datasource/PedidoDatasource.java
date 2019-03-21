@@ -11,7 +11,7 @@ import java.util.Scanner;
 import model.ItemPedido;
 import model.Pedido;
 
-public class PedidoDatasource {
+public class PedidoDatasource implements IDataSource{
 	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	
 	static int codPed = 1;
