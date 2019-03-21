@@ -1,11 +1,19 @@
 package vvcurso;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
+
+import org.apache.commons.io.IOUtils;
+
 import datasource.PedidoDatasource;
 
 public class MainApp {
-	
-	public static void main(String[] args) {
+	private static final String file = "C:\\Users\\Faki\\eclipse-workspace\\aulajava\\src\\datasource\\teste";
+	public static void main(String[] args) throws IOException{
+		String str = IOUtils.toString(new FileReader(file));
+		System.out.println(str);
+		
 		Scanner input = new Scanner(System.in);
 		PedidoDatasource pedidoDS = new PedidoDatasource();
 		int opcaoMenu = 0;
