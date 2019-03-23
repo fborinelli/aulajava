@@ -1,4 +1,4 @@
-package vvcurso;
+package br.com.vvcurso;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,16 +6,26 @@ import java.util.Scanner;
 
 import org.apache.commons.io.IOUtils;
 
-import datasource.PedidoDatasource;
+import br.com.datasource.BaseDatasource;
 
 public class MainApp {
 	private static final String file = "C:\\Users\\Faki\\eclipse-workspace\\aulajava\\src\\datasource\\teste";
 	public static void main(String[] args) throws IOException{
 		String str = IOUtils.toString(new FileReader(file));
 		System.out.println(str);
+		BaseDatasource pedidoDS;
 		
 		Scanner input = new Scanner(System.in);
-		PedidoDatasource pedidoDS = new PedidoDatasource();
+		System.out.println("Gravar em Arquivo(A) ou Memoria(M)?");
+		
+		if (input.next().toString().toUpperCase().equals("A")) {
+			 pedidoDS = new ArquivoDataSource();
+		}else if (input.next().toString().toUpperCase().equals("M")) {
+			pedidoDS = new MemoriaDataSource();
+		}else {
+			System.err.println("Opção Inválida. Digite 'A' ou 'M'.");
+		}
+		
 		int opcaoMenu = 0;
 
 		while (opcaoMenu != 5) {
@@ -42,7 +52,7 @@ public class MainApp {
 		return str.toString();
 	}
 
-	public static void trataOpcaoMenu(int opcao, PedidoDatasource pedidoDS) {
+	public static void trataOpcaoMenu(int opcao, BaseDatasource pedidoDS) {
 
 		switch (opcao) {
 		case 1:

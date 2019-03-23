@@ -1,20 +1,22 @@
-package datasource;
+package br.com.datasource;
 
 import java.math.BigDecimal;
-//import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-//import java.util.Arrays;
 import java.util.Scanner;
 
-import model.ItemPedido;
-import model.Pedido;
+import br.com.model.ItemPedido;
+import br.com.model.Pedido;
 
-public class PedidoDatasource implements IDataSource{
+public abstract class BaseDatasource implements IDataSource {
 	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	
 	static int codPed = 1;
+	
+	public void carregaPedidosArquivo(List<Pedido> ped) {
+		pedidos = ped;
+	}
 
 	public void listar() {
 		if (pedidos.size() > 0) {

@@ -1,4 +1,4 @@
-package model;
+package br.com.model;
 
 import java.util.Date;
 

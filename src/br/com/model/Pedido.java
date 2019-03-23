@@ -1,4 +1,4 @@
-package model;
+package br.com.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
