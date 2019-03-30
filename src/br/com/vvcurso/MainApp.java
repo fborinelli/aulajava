@@ -4,14 +4,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-
-import br.com.datasource.BaseDatasource;
+import br.com.datasource.*;
 
 public class MainApp {
 	private static final String file = "C:\\Users\\Faki\\eclipse-workspace\\aulajava\\src\\datasource\\teste";
 	public static void main(String[] args) throws IOException{
 		String str = IOUtils.toString(new FileReader(file));
+		FileUtils file = new FileUtils();
+		
 		System.out.println(str);
 		BaseDatasource pedidoDS;
 		
@@ -19,9 +21,11 @@ public class MainApp {
 		System.out.println("Gravar em Arquivo(A) ou Memoria(M)?");
 		
 		if (input.next().toString().toUpperCase().equals("A")) {
-			 pedidoDS = new ArquivoDataSource();
+			 pedidoDS = new ArquivoDataSource() {
+			};
 		}else if (input.next().toString().toUpperCase().equals("M")) {
-			pedidoDS = new MemoriaDataSource();
+			pedidoDS = new MemoriaDataSource() {
+			};
 		}else {
 			System.err.println("Opção Inválida. Digite 'A' ou 'M'.");
 		}
@@ -33,7 +37,7 @@ public class MainApp {
 
 			opcaoMenu = input.nextInt();
 
-			trataOpcaoMenu(opcaoMenu, pedidoDS);
+			//trataOpcaoMenu(opcaoMenu, pedidoDS);
 		}
 	}
 
